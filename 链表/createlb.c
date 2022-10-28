@@ -16,7 +16,7 @@ STU *dellb(STU *head);//删除链表成员
 STU *create(int n){
     int i=0;
     STU *p,*q,*head=0;//*p用来存放每次获取的地址，*q用来存放进行链表连接的尾指针,*head用来存放首地址
-
+    
     while(i++<n){
         if((p=(STU *)malloc(sizeof(STU)))==NULL){
             printf("Not able to allocate memory.\n");
