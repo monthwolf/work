@@ -58,6 +58,10 @@ STU *addlb(STU *head){
     a:printf("请输入添加的学生学号、姓名：\n");
     scanf("%lu%s",&q->xh,q->name);
     q->next=0;
+    if(head==0){
+        head=q;
+        return head;
+    }
     if (q->xh<p->xh){
         q->next=p;
         head=q;
@@ -98,6 +102,14 @@ STU *dellb(STU *head){
         p=p->next;
     }
     if(p!=0){
+        char n;
+        printf("查询到该学生为\n学号:%lu  姓名:%s\n确认要删除？(y/n)",p->xh,p->name);
+        scanf(" %c",&n);
+        if(n=='n')return head;
+        if(head->xh==num){
+            head=head->next;
+            return head;
+        }
         f->next=p->next;
         return head;
     }
@@ -146,7 +158,13 @@ int main(){
                 STU *p=head;
                 if((fp=fopen("学生信息.txt","w"))==NULL)printf("open failed!\n");
                 while(p!=0){
-                    fprintf(fp,"学号：%lu   姓名:%s\n",p->xh,p->name);
+                    
+                    if((p->xh)/1000000)
+                        fprintf(fp,"学号：%-13lu姓名:%s\n",p->xh,p->name);
+                    else if((p->xh)/1000)
+                        fprintf(fp,"学号：%-8lu姓名:%s\n",p->xh,p->name);
+                    else
+                        fprintf(fp,"学号：%-5lu姓名:%s\n",p->xh,p->name);
                     p=p->next;
                 }
                 if(fclose(fp)){
@@ -161,4 +179,3 @@ int main(){
     }
     return 0;
 }
-
