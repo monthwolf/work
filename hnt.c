@@ -20,7 +20,7 @@ int main(){
 }
 
 void hnt(int r,int n,char A,char B,char C){
-    //n1开始 n2辅助 n3终止
+    //A开始 B辅助 C终止
     if(n==1){
         i++;
         //if(i==r)
