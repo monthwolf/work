@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-char *getWord(char *,FILE *);
+char *getWord(char **,FILE *);
 
 int main(){
     char *str1="hello",*str2="dog";
@@ -20,9 +20,14 @@ int main(){
     return 0;
 }
 
-char *getWord(char *w_l,FILE *fp){
+char *getWord(char **w_l,FILE *fp){
     int i;
+    //char *str;
     //i=fscanf(fp,"%[^\n]",*(w_l++));
-    printf("%p",w_l);
+    //printf("%p",w_l);  字符数组首地址
+    //printf("%d",**w_l);  第一个字符串首字母
+    //printf("%s",*w_l++);  第一个字符串  
+    //printf(" %s",*w_l);   第二个字符串
+    scanf("%*c %s",*w_l);
     
 }
