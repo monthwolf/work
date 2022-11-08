@@ -11,7 +11,7 @@
       "stopAtEntry": false,
       "cwd": "/root/home/work",
       "environment": [],
-      "program": "/root/home/work/build/Release/outRelease",
+      "program": "/root/home/work/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",
