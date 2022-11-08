@@ -10,6 +10,7 @@ C:最终到达的柱子
 其实思路就是n个盘子从一个柱子到另一个柱子需要借助辅助柱进行移动
 搞清楚逻辑关系就好了
 */
+
 #include <stdio.h>
 int i=0;
 void hnt(int,int,char,char,char);//输出第r次移动
