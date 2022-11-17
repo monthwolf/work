@@ -2,8 +2,11 @@
 #define N 4
 int fun(int x[][N],int a[],int b[]);
 int main(){
-    int a[N*N]={0},b[N*N]={0},x[N][N]={5,6,6,7,8,1,5,6,8,7,6,7,5,5,1,8};
-    fun(x,a,b);
+    int i,n,a[N*N]={0},b[N*N]={0},x[N][N]={5,6,6,7,8,1,5,6,8,7,6,7,5,5,1,8};
+    n=fun(x,a,b);
+    for(i=0;i<n;i++){
+        printf("%d:%d  ",a[i],b[i]);
+    }
     return 0;
 }
 
@@ -28,11 +31,11 @@ int fun(int x[][N],int a[],int b[]){
             }
         }
     }
-
+    /*
     for(k=0;k<=n;k++){
         printf("%d:%d  ",a[k],b[k]);
     }
-    
+    */
 
-    return 0;
+    return n+1;
 }
