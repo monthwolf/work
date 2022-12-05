@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define NUM 30
 void mybubble(int *pArr, int num)
-{//ʹ��ð�����򷨶�����pArr���д�С��������numΪ����Ԫ�صĸ���
+{//使用冒泡排序法对数组pArr进行从小到大排序，num为数组元素的个数
 	int i, j, t;
 	for (i = 0; i < num - 1; i++)
 	{
@@ -17,8 +17,8 @@ void mybubble(int *pArr, int num)
 	}
 }
 int myfind(int *pArr, int key, int num)
-{	//����pArr�Ѱ���С�����ź���keyΪҪ���ҵĹؼ���ֵ��numΪ����Ԫ�صĸ���
-	//���ҳɹ������ظùؼ���ֵ����λ�õ��±꣬������ʧ���򷵻�-1
+{	//数组pArr已按从小到大排好序，key为要查找的关键字值，num为数组元素的个数
+	//查找成功，返回该关键字值所在位置的下标，若查找失败则返回-1
 	int m,a=0,b=num-1;
 	if(pArr[a]==key){
 		return a;
@@ -38,56 +38,56 @@ int myfind(int *pArr, int key, int num)
 	}
 	return -1;
 
-//����ʵ��s04128����ش���
+//填入实验s04128的相关代码
 
 
 }
 int myinsert(int *pArr, int key, int *num)
-{	//����pArr�Ѱ���С�����ź���numΪ����Ԫ�صĸ�����keyΪҪ����Ĺؼ���ֵ����������鱣������
-	//����ɹ��󣬷��ز���λ�õ��±꣬������ʧ���򷵻�-1
-	//����Ѿ����ڸùؼ���ֵԪ�أ������ʧ��
-	int i,p;
-	//����Ƿ��ظ�
+{	//数组pArr已按从小到大排好序，num为数组元素的个数，key为要插入的关键字值，插入后数组保持有序
+	//插入成功后，返回插入位置的下标，若插入失败则返回-1
+	//如果已经存在该关键字值元素，则插入失败
+	int i,p,temp;
+	//检测是否重复
 	if(myfind(pArr,key,*num)!=-1)return -1;
 	else{
-		//ѭ�����Ҳ��洢λ��
+		//循环查找并存储位置
 		for(i=0;i<*num;i++){
 			if(pArr[i]>key){
-				*num++;
-				p=i;//�洢����λ��
+				(*num)++;
+				p=i;//存储插入位置
 				break;
 			}
 		}
-		//��ԭ����Ӳ���λ�ÿ�ʼ�����λ
-		for(i=p+1;i<*num;i++){
+		//将原数组从插入位置开始向后移位
+		for(i=*num-1;i>p;i--){
 			pArr[i]=pArr[i-1];
 		}
-		//�����ݲ���
+		//将数据插入
 		pArr[p]=key;
 		return p;
 	}
-//����ʵ�ִ���
+//补充实现代码
 
 
 }
 int mydelete(int *pArr, int key, int *num)
-{	//����pArr�Ѱ���С�����ź���numΪ����Ԫ�صĸ�����keyΪҪɾ����ֵ��ɾ�������鱣������
-	//ɾ���ɹ��󣬷��ظ�Ԫ�ص��±꣬��ɾ��ʧ���򷵻�-1
-	//��������ڸùؼ���ֵԪ�أ���ɾ��ʧ��
+{	//数组pArr已按从小到大排好序，num为数组元素的个数，key为要删除的值，删除后数组保持有序
+	//删除成功后，返回该元素的下标，若删除失败则返回-1
+	//如果不存在该关键字值元素，则删除失败
 	int i,p;
-	//����Ƿ����,����p�洢�±�
+	//检测是否存在,并用p存储下标
 	if((p=myfind(pArr,key,*num))==-1)return -1;
 	else{
-		//��������Ԫ�ظ���
-		*num--;
-		//��ԭ����Ӳ���λ�ÿ�ʼ��ǰ��λ
+		//更新数组元素个数
+		(*num)--;
+		//将原数组从插入位置开始向前移位
 		for(i=p;i<*num;i++){
 			pArr[i]=pArr[i+1];
 		}
-		//����ɾ�������±�
+		//返回删除数据下标
 		return p;
 	}
-//����ʵ�ִ���
+//补充实现代码
 }
 void printarray(int *pArr, int num)
 {
@@ -100,10 +100,10 @@ void printarray(int *pArr, int num)
 int main()
 {
 	int MA[NUM] = { 34, 76, 23, 67, 345, 234, 21, 78, 172, 90 };
-	int nums = 10;//����Ԫ�ظ���
+	int nums = 10;//数组元素个数
 	int mkey, nkey, k;
 	mybubble(MA, nums);
-	scanf("%d%d", &mkey, &nkey);//����2������
+	scanf("%d%d", &mkey, &nkey);//输入2个整数
 	k = myinsert(MA, mkey, &nums);
 	if (k < 0)
 		printf("insert ERROR\n");
