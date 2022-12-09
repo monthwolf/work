@@ -56,7 +56,7 @@ int file_print(FILE *fp,CAL *cal){
             for(j=0;j<7;j++){
                 fprintf(fp,"%4s",week[j]);
             }
-            if(n=0)fprintf(fp,"\t\t");
+            if(n==0)fprintf(fp,"\t\t");
         }//月标题
         for(j=0;j<42;j++){
             if(j%7==0){
@@ -68,7 +68,7 @@ int file_print(FILE *fp,CAL *cal){
                     fprintf(fp,"\t");
                 else
                     fprintf(fp,"%4d",++d);
-                if(n=0)fprintf(fp,"\t\t");
+                if(n==0)fprintf(fp,"\t\t");
             }
         }//每月日期
         fprintf(fp,"\n");
