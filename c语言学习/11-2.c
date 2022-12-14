@@ -52,31 +52,31 @@ int file_print(FILE *fp, CAL *cal) {
 		d1 = 1;
 		d2 = 1;
 		for (n = 0; n < 2; n++) {
-			fprintf(fp, "%4d", i + 1 + n);
+			fprintf(fp, "%8d", i + 1 + n);
 			for (j = 0; j < 7; j++) {
-				fprintf(fp, "%4s", week[j]);
+				fprintf(fp, "%8s", week[j]);
 			}
 			if (n == 0)
-				fprintf(fp, "      ");
+				fprintf(fp, "\t\t");
 		}//月标题
-		fprintf(fp, "\n      ");
+		fprintf(fp, "\n\t\t");
 		for (j = 0; j < 42; j += 7) {
 			for (a = 0; a < 7; a++) {
 				if (cal[i].day[j + a] == week[7])
-					fprintf(fp, "      ");
+					fprintf(fp, "\t\t");
 				else {
-					fprintf(fp, "%6d", d1++);
+					fprintf(fp, "%8d", d1++);
 				}
 			}
-			fprintf(fp, "            ");
+			fprintf(fp, "\t\t\t\t");
 			for (b = 0; b < 7; b++) {
 				if (cal[i + 1].day[j + b] == week[7])
-					fprintf(fp, "      ");
+					fprintf(fp, "\t\t");
 				else {
-					fprintf(fp, "%6d", d2++);
+					fprintf(fp, "%8d", d2++);
 				}
 			}
-			fprintf(fp, "\n    ");
+			fprintf(fp, "\n\t\t");
 		}//每月日期
 		fprintf(fp, "\n");
 	}
